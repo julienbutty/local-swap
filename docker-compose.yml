@@ -1,21 +1,56 @@
-version: '3'
-
+version: '3.7'
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-15}-alpine
+  mariadb:
+    image: mariadb:10.5
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=ecoswap
+      - MARIADB_PORT_NUMBER=3306
+      - MARIADB_ROOT_USER=root
+      - MARIADB_USER=ecoswap
+      - MARIADB_PASSWORD=ecoswap
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      - mysql_data:/var/lib/mysql
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      ecoswap:
+        ipv4_address: 172.22.0.5
+    ports:
+      - 3306:3306
+
+  php:
+    build: ./docker/php-fpm
+    volumes:
+      - ./:/var/www/symfony
+      - ./docker/php-fpm/php.ini:/usr/local/etc/php/php.ini
+    links:
+      - mariadb
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      ecoswap:
+        ipv4_address: 172.22.0.4
+
+  nginx:
+    image: nginx:1.17-alpine
+    volumes:
+      - ./:/var/www/symfony
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 8080:80
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      ecoswap:
+        ipv4_address: 172.22.0.3
 
 volumes:
-###> doctrine/doctrine-bundle ###
-  database_data:
-###< doctrine/doctrine-bundle ###
+  mysql_data:
+
+networks:
+  ecoswap:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.2/16
