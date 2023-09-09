@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon site Symfony{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>En-tête de mon site</h1>
+        <nav>
+            <!-- Ajoutez votre navigation ici -->
+        </nav>
+    </header>
+    
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+    
+    <footer>
+        <p>© 2023 Mon site Symfony. Tous droits réservés.</p>
+    </footer>
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

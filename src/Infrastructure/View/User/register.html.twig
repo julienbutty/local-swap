@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer mon compte{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- Liens vers des feuilles de style spécifiques à cette page -->
+{% endblock %}
+
+{% block body %}
+    <h2>Créer votre compte</h2>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+        {% dump(message )%}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{ form_row(form.firstName) }}
+        </div>
+        <div class="col" >
+            {{ form_row(form.lastName) }}
+        </div>
+        <div class="col" >
+            {{ form_row(form.userName) }}
+        </div>
+        <div class="col" >
+            {{ form_row(form.email) }}
+        </div>
+        <div class="col" >
+            {{ form_row(form.plainPassword) }}
+        </div>
+        {{ form_row(form.submit) }}
+    </div>
+{{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- Scripts spécifiques à cette page -->
+{% endblock %}
