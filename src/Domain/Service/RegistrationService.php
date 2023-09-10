@@ -2,16 +2,10 @@
 
 namespace App\Domain\Service;
 
-use App\Application\DTO\RegistrationData;
 use App\Domain\Entity\User;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use RegistrationException;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
-use UserRepository;
 
 class RegistrationService
 {

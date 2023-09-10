@@ -5,8 +5,6 @@ namespace App\Infrastructure\Controller;
 use App\Application\DTO\RegistrationData;
 use App\Application\UseCase\RegistrationUseCase;
 use App\Infrastructure\Form\Type\RegistrationType;
-use App\Infrastructure\Repository\UserRepository;
-use Exception;
 use Psr\Log\LoggerInterface;
 use RegistrationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,13 +17,11 @@ class UserController extends AbstractController
 
     private RegistrationUseCase $registrationUseCase;
     private LoggerInterface $logger;
-    private UserRepository $userRepository;
 
-    public function __construct(RegistrationUseCase $registrationUseCase, LoggerInterface $logger, UserRepository $userRepository)
+    public function __construct(RegistrationUseCase $registrationUseCase, LoggerInterface $logger)
     {
         $this->registrationUseCase = $registrationUseCase;
         $this->logger = $logger;
-        $this->userRepository = $userRepository;
     }
 
     #[Route("/register", name: "app_register")]
@@ -49,10 +45,10 @@ class UserController extends AbstractController
                 $this->logger->error("RegistrationController: An error occured during the registration process", ['exception' => $exception]);
                 $this->addFlash('error', 'Une erreur est survenue. Veuillez réessayer ultérieurement.');
 
-                return $this->render("/user/register.html.twig");
+                return $this->render("/User/register.html.twig");
             }
         }
-        return $this->render('user/register.html.twig', [
+        return $this->render('/User/register.html.twig', [
             'form' => $form->createView(),
         ]);
     }
