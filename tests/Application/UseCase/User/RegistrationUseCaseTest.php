@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Tests\Application\UseCase;
+namespace App\Tests\Application\UseCase\User;
 
-use App\Application\DTO\RegistrationData;
-use App\Application\UseCase\RegistrationUseCase;
-use App\Domain\Entity\User;
-use App\Domain\Service\RegistrationService;
+use App\Application\DTO\User\RegistrationData;
+use App\Application\UseCase\User\RegistrationUseCase;
+use App\Domain\Service\User\RegistrationService;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class RegistrationUseCaseTest extends TestCase

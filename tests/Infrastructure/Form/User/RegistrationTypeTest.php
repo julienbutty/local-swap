@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Tests\Infrastructure\Form;
+namespace App\Tests\Infrastructure\Form\User;
 
-use App\Application\DTO\RegistrationData;
-use App\Infrastructure\Form\Type\RegistrationType;
+use App\Application\DTO\User\RegistrationData;
+use App\Infrastructure\Form\Type\User\RegistrationType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 class RegistrationTypeTest extends TypeTestCase

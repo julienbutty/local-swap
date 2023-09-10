@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Tests\Domain\Service;
+namespace App\Tests\Domain\Service\User;
 
 use App\Domain\Entity\User;
-use App\Domain\Service\RegistrationService;
+use App\Domain\Service\User\RegistrationService;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 

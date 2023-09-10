@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Tests\Application\DTO;
+namespace App\Tests\Application\DTO\User;
 
-use App\Application\DTO\RegistrationData;
+use App\Application\DTO\User\RegistrationData;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;
 

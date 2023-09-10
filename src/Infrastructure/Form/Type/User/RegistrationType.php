@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Form\Type;
+namespace App\Infrastructure\Form\Type\User;
 
-use App\Application\DTO\RegistrationData;
+use App\Application\DTO\User\RegistrationData;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;

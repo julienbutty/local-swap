@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Application\UseCase;
+namespace App\Application\UseCase\User;
 
-use App\Application\DTO\RegistrationData;
+use App\Application\DTO\User\RegistrationData;
 use App\Domain\Entity\User;
-use App\Domain\Service\RegistrationService;
+use App\Domain\Service\User\RegistrationService;
 use Psr\Log\LoggerInterface;
 use RegistrationException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;

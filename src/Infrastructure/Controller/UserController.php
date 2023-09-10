@@ -2,9 +2,9 @@
 
 namespace App\Infrastructure\Controller;
 
-use App\Application\DTO\RegistrationData;
-use App\Application\UseCase\RegistrationUseCase;
-use App\Infrastructure\Form\Type\RegistrationType;
+use App\Application\DTO\User\RegistrationData;
+use App\Application\UseCase\User\RegistrationUseCase;
+use App\Infrastructure\Form\Type\User\RegistrationType;
 use Psr\Log\LoggerInterface;
 use RegistrationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
