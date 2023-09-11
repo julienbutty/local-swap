@@ -4,24 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mon site Symfony{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
 </head>
 <body>
-    <header>
-        <h1>En-tête de mon site</h1>
-        <nav>
-            <!-- Ajoutez votre navigation ici -->
-        </nav>
-    </header>
-    
-    <main>
-        {% block body %}{% endblock %}
-    </main>
-    
-    <footer>
-        <p>© 2023 Mon site Symfony. Tous droits réservés.</p>
-    </footer>
+<!-- Barre de navigation Bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+        <a class="navbar-brand" href="/">EcoSwap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/listings">Listes d'objets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Inscription</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-    {% block javascripts %}{% endblock %}
+<!-- Contenu principal de la page -->
+<div class="container bg-white mt-5">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Pied de page Bootstrap -->
+<footer class="footer mt-auto py-3 bg-white">
+    <div class="container">
+        <span class="text-muted">© 2023 EcoSwap. Tous droits réservés.</span>
+    </div>
+</footer>
+
+    {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
 </body>
 </html>
